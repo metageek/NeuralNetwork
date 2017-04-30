@@ -1,5 +1,5 @@
 # NeuralNetwork
-NeuralNetworkLib is a simple and powerful library that can be easily called in your c++ project to create neural networks of any size.
+NeuralNetwork is a simple and powerful library that can be easily called in your c++ project to create neural networks of any size.
 
 ## Training
 
