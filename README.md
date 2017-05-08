@@ -5,6 +5,8 @@ NeuralNetwork is a simple and powerful library that can be easily called in your
 
 If you need a simple push to understand neural networks (it's not very detailed): http://sparkycoder.com/fast-neural-networks-creation/
 
+For the moment, this library don’t use bias. Bias is a constant that typically neural networks have. I will try to do it soon and then i will update the code.
+
 ## Training
 
 In development: Genetic Algorithm
