@@ -1,6 +1,10 @@
 # NeuralNetwork
 NeuralNetwork is a simple and powerful library that can be easily called in your c++ project to create neural networks of any size.
 
+## About
+
+If you need a simple push to understand neural networks (it's not very detailed): http://sparkycoder.com/fast-neural-networks-creation/
+
 ## Training
 
 In development: Genetic Algorithm
