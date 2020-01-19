@@ -1,8 +1,8 @@
-#ifndef _NEURAL_NETWORK_NEURAL_NETWORK_H_
-#define _NEURAL_NETWORK_NEURAL_NETWORK_H_
+#ifndef _NEURAL_NETWORK_NEURAL_NETWORK_HPP_
+#define _NEURAL_NETWORK_NEURAL_NETWORK_HPP_
 
-#include "Neuron.h"
-#include "Synapse.h"
+#include "Neuron.hpp"
+#include "Synapse.hpp"
 #include <vector>
 
 class NeuralNetwork {
@@ -145,4 +145,4 @@ inline void NeuralNetwork::createNetwork()
 
 }
 
-#endif //_NEURAL_NETWORK_NEURAL_NETWORK_H_
+#endif //_NEURAL_NETWORK_NEURAL_NETWORK_HPP_

@@ -1,8 +1,8 @@
-#ifndef _NEURAL_NETWORK_NEURON_H_
-#define _NEURAL_NETWORK_NEURON_H_
+#ifndef _NEURAL_NETWORK_NEURON_HPP_
+#define _NEURAL_NETWORK_NEURON_HPP_
 
 #include <cmath>
-#include "Layer.h"
+#include "Layer.hpp"
 
 class Neuron {
 private:
@@ -70,4 +70,4 @@ inline bool Neuron::isLast()
 	return this->last;
 }
 
-#endif //_NEURAL_NETWORK_NEURON_H_
+#endif //_NEURAL_NETWORK_NEURON_HPP_

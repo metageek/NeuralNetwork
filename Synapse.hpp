@@ -1,7 +1,7 @@
-#ifndef _NEURAL_NETWORK_SYNAPSE_H_
-#define _NEURAL_NETWORK_SYNAPSE_H_
+#ifndef _NEURAL_NETWORK_SYNAPSE_HPP_
+#define _NEURAL_NETWORK_SYNAPSE_HPP_
 
-#include "Neuron.h"
+#include "Neuron.hpp"
 
 class Synapse {
 private:
@@ -46,4 +46,4 @@ inline Neuron * Synapse::getOutput()
 	return this->output;
 }
 
-#endif //_NEURAL_NETWORK_SYNAPSE_H_
+#endif //_NEURAL_NETWORK_SYNAPSE_HPP_
