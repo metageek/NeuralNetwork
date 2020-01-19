@@ -16,7 +16,22 @@ private:
 	std::vector<std::vector<Neuron>> hidden;
 	void createNetwork();
 public:
-	NeuralNetwork(int inputNeurons, int hiddenLayers, int hiddenNeuronsPerLayer, int ouputNeurons);
+	NeuralNetwork(int _inputNeurons,
+                      int _hiddenLayers, int _hiddenNeuronsPerLayer,
+                      int _ouputNeurons)
+          : inputNeurons(_inputNeurons),
+            hiddenLayers(_hiddenLayers),
+            hiddenNeuronsPerLayer(_hiddenNeuronsPerLayer),
+            ouputNeurons(_ouputNeurons),
+            synapsesSize((inputNeurons*hiddenNeuronsPerLayer) +
+                         ((hiddenLayers-1)*hiddenNeuronsPerLayer*hiddenNeuronsPerLayer) +
+                         (ouputNeurons*hiddenNeuronsPerLayer)) {
+          input.resize(inputNeurons, nullptr);
+          output.resize(ouputNeurons, nullptr);
+          synapses = new Synapse[this->synapsesSize];
+          createNetwork();
+        }
+
 	~NeuralNetwork();
 	void calculate();
 	Synapse * getAllSynapses();
@@ -26,19 +41,6 @@ public:
 	int getSynapsesSize();
 	std::vector<std::vector<Neuron>> * getHiddenLayer();
 };
-
-inline NeuralNetwork::NeuralNetwork(int inputNeurons, int hiddenLayers, int hiddenNeuronsPerLayer, int ouputNeurons)
-{
-	this->inputNeurons = inputNeurons;
-	this->hiddenLayers = hiddenLayers;
-	this->hiddenNeuronsPerLayer = hiddenNeuronsPerLayer;
-	this->ouputNeurons = ouputNeurons;
-	this->synapsesSize = (inputNeurons*hiddenNeuronsPerLayer) + ((hiddenLayers-1)*hiddenNeuronsPerLayer*hiddenNeuronsPerLayer) + (ouputNeurons*hiddenNeuronsPerLayer);
-	input.resize(inputNeurons, nullptr);
-	output.resize(ouputNeurons, nullptr);
-	synapses = new Synapse[this->synapsesSize];
-	this->createNetwork();
-}
 
 inline NeuralNetwork::~NeuralNetwork()
 {
