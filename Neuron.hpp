@@ -14,8 +14,7 @@ private:
 	float value;
 	bool last;
 public:
-	Neuron(Layer layerType, int id, bool last);
-	const int id;
+	Neuron(Layer layerType, bool last);
 	void calculateValue(float weight, float inputValue, bool doSigmoid);
 	float sigmoid(float value);
 	void setValue(float value);
@@ -25,8 +24,8 @@ public:
 
 using Vector = std::vector<Neuron*>;
 
-inline Neuron::Neuron(Layer _layerType, int _id, bool _last)
-  : layerType(_layerType), value(0), last(_last), id(_id) {
+inline Neuron::Neuron(Layer _layerType, bool _last)
+  : layerType(_layerType), value(0), last(_last) {
 }
 
 inline void Neuron::calculateValue(float weight, float inputValue, bool doSigmoid)
