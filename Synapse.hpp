@@ -7,45 +7,19 @@ namespace NN {
 
 class Synapse {
 private:
-	float weight;
-	Neuron *input, *output;
+	float weight = 0;
+        Neuron* input = nullptr;
+        Neuron* output = nullptr;
 public:
-	Synapse(Neuron *input, Neuron *output);
-	Synapse();
-	void setWeight(float weight);
-	float getWeight();
-	Neuron * getInput();
-	Neuron * getOutput();
+        Synapse(Neuron *_input, Neuron *_output)
+          : input(_input), output(_output) {
+        }
+        Synapse() {}
+        void setWeight(float _weight) { weight = _weight; }
+        float getWeight() const { return weight; }
+        Neuron * getInput() { return input; }
+        Neuron * getOutput() { return output; }
 };
-
-inline Synapse::Synapse(Neuron *_input, Neuron *_output)
-  : weight(0), input(_input), output(_output)
-{
-}
-
-inline Synapse::Synapse()
-{
-}
-
-inline void Synapse::setWeight(float _weight)
-{
-	weight = _weight;
-}
-
-inline float Synapse::getWeight()
-{
-	return weight;
-}
-
-inline Neuron * Synapse::getInput()
-{
-	return input;
-}
-
-inline Neuron * Synapse::getOutput()
-{
-	return output;
-}
 
 } // end namespace NN
 
