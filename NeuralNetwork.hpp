@@ -40,9 +40,9 @@ public:
   const std::vector<Synapse*>& getAllSynapses() { return synapses; }
   Vector& getInputLayer() { return input; }
   const Vector& getOutputLayer() const { return output; }
-  void setWeights(float weights[]);
+  void setWeights(const std::vector<float>& weights);
   int getSynapsesSize() { return synapses.size(); }
-  std::vector<std::vector<Neuron>> * getHiddenLayer();
+  std::vector<std::vector<Neuron>> * getHiddenLayer() { return &hidden; }
 };
 
 inline void NeuralNetwork::calculate()
@@ -55,16 +55,12 @@ inline void NeuralNetwork::calculate()
   }
 }
 
-inline void NeuralNetwork::setWeights(float weights[])
-{
-  for (int i = 0; i < synapses.size(); i++) {
-    synapses[i]->setWeight(weights[i]);
+inline void NeuralNetwork::setWeights(const std::vector<float>& weights) {
+  if (weights.size() == synapses.size()) {
+    for (int i = 0; i < synapses.size(); i++) {
+      synapses[i]->setWeight(weights[i]);
+    }
   }
-}
-
-inline std::vector<std::vector<Neuron>> * NeuralNetwork::getHiddenLayer()
-{
-  return &hidden;
 }
 
 inline void NeuralNetwork::createNetwork()

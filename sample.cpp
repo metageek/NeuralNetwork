@@ -20,8 +20,7 @@ int main(int argc, const char* argv[]) {
   input[0]->setValue(1);
   input[1]->setValue(1);
 
-  float weights[] = {0.8, 0.4, 0.3, 0.2, 0.9, 0.5, 0.3, 0.5, 0.9};
-  nn.setWeights(weights);
+  nn.setWeights({0.8, 0.4, 0.3, 0.2, 0.9, 0.5, 0.3, 0.5, 0.9});
   nn.calculate();
 
   //array with size equals to your output neurons number (ouputNeurons)
