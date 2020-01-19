@@ -2,6 +2,8 @@
 #define _NEURAL_NETWORK_NEURON_HPP_
 
 #include <cmath>
+#include <vector>
+
 #include "Layer.hpp"
 
 namespace NN {
@@ -22,6 +24,8 @@ public:
 	float getValue();
 	bool isLast();
 };
+
+using Vector = std::vector<Neuron*>;
 
 inline Neuron::Neuron()
 {
