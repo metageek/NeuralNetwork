@@ -97,11 +97,10 @@ inline void NeuralNetwork::createNetwork()
 
 	for (int i = 0; i < this->inputNeurons; i++)
 	{
-		if(i == this->inputNeurons-1)
-			input[i] = new Neuron(Layer::input, true);
+		if (i == this->inputNeurons-1)
+                        input[i] = new Neuron(Layer::input, id, true);
 		else
-			input[i] = new Neuron(Layer::input, false);
-		input[i]->id = id;
+                        input[i] = new Neuron(Layer::input, id, false);
 		id++;
 		for (int j = 0; j < this->hiddenNeuronsPerLayer; j++)
 		{
@@ -124,8 +123,7 @@ inline void NeuralNetwork::createNetwork()
 
 	for (int i = 0; i < this->ouputNeurons; i++)
 	{
-		output[i] = new Neuron(Layer::output, false);
-		output[i]->id = id;
+                output[i] = new Neuron(Layer::output, id, false);
 		id++;
 		for (int j = 0; j < this->hiddenNeuronsPerLayer; j++)
 		{
