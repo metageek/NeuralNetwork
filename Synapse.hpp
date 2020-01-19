@@ -18,34 +18,33 @@ public:
 	Neuron * getOutput();
 };
 
-inline Synapse::Synapse(Neuron *input, Neuron *output)
+inline Synapse::Synapse(Neuron *_input, Neuron *_output)
+  : weight(0), input(_input), output(_output)
 {
-	this->input = input;
-	this->output = output;
-	this->weight = 0;
 }
 
 inline Synapse::Synapse()
 {
 }
-inline void Synapse::setWeight(float weight)
+
+inline void Synapse::setWeight(float _weight)
 {
-	this->weight = weight;
+	weight = _weight;
 }
 
 inline float Synapse::getWeight()
 {
-	return this->weight;
+	return weight;
 }
 
 inline Neuron * Synapse::getInput()
 {
-	return this->input;
+	return input;
 }
 
 inline Neuron * Synapse::getOutput()
 {
-	return this->output;
+	return output;
 }
 
 } // end namespace NN
