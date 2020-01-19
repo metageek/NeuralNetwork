@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _NEURAL_NETWORK_NEURON_H_
+#define _NEURAL_NETWORK_NEURON_H_
+
 #include <cmath>
 #include "Layer.h"
 
@@ -67,3 +69,5 @@ inline bool Neuron::isLast()
 {
 	return this->last;
 }
+
+#endif //_NEURAL_NETWORK_NEURON_H_

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _NEURAL_NETWORK_SYNAPSE_H_
+#define _NEURAL_NETWORK_SYNAPSE_H_
+
 #include "Neuron.h"
 
 class Synapse {
@@ -43,3 +45,5 @@ inline Neuron * Synapse::getOutput()
 {
 	return this->output;
 }
+
+#endif //_NEURAL_NETWORK_SYNAPSE_H_

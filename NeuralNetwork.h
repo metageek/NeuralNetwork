@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _NEURAL_NETWORK_NEURAL_NETWORK_H_
+#define _NEURAL_NETWORK_NEURAL_NETWORK_H_
+
 #include "Neuron.h"
 #include "Synapse.h"
 #include <vector>
@@ -142,3 +144,5 @@ inline void NeuralNetwork::createNetwork()
 	}
 
 }
+
+#endif //_NEURAL_NETWORK_NEURAL_NETWORK_H_
