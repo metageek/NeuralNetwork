@@ -47,21 +47,19 @@ public:
 
 inline void NeuralNetwork::calculate()
 {
-  for (int i = 0; i < synapses.size(); i++)
-    {
-      synapses[i]->getOutput()->
-        calculateValue(synapses[i]->getWeight(),
-                       synapses[i]->getInput()->getValue(),
-                       synapses[i]->getInput()->isLast());
-    }
+  for (int i = 0; i < synapses.size(); i++) {
+    synapses[i]->getOutput()->
+      calculateValue(synapses[i]->getWeight(),
+                     synapses[i]->getInput()->getValue(),
+                     synapses[i]->getInput()->isLast());
+  }
 }
 
 inline void NeuralNetwork::setWeights(float weights[])
 {
-  for (int i = 0; i < synapses.size(); i++)
-    {
-      synapses[i]->setWeight(weights[i]);
-    }
+  for (int i = 0; i < synapses.size(); i++) {
+    synapses[i]->setWeight(weights[i]);
+  }
 }
 
 inline std::vector<std::vector<Neuron>> * NeuralNetwork::getHiddenLayer()
@@ -73,56 +71,41 @@ inline void NeuralNetwork::createNetwork()
 {
   int currentSynapse = 0;
 
-  for (int i = 0; i < hiddenNeuronsPerLayer; i++)
-    {
-      std::vector<Neuron> row;
-      for (int j = 0; j < hiddenLayers; j++)
-        {
-          if (i == hiddenNeuronsPerLayer - 1)
-            row.push_back(Neuron(Layer::hidden, true));
-          else
-            row.push_back(Neuron(Layer::hidden, false));
-        }
-      hidden.push_back(row);
+  for (int i = 0; i < hiddenNeuronsPerLayer; i++) {
+    std::vector<Neuron> row;
+    for (int j = 0; j < hiddenLayers; j++) {
+      row.push_back(Neuron(Layer::hidden,
+                           (i == hiddenNeuronsPerLayer - 1)));
     }
+    hidden.push_back(row);
+  }
 
-  for (int i = 0; i < inputNeurons; i++)
-    {
-      if (i == inputNeurons-1)
-        input[i] = new Neuron(Layer::input, true);
-      else
-        input[i] = new Neuron(Layer::input, false);
-      for (int j = 0; j < hiddenNeuronsPerLayer; j++)
-        {
-          synapses[currentSynapse] = new Synapse(input[i], &hidden.at(j).at(0));
-          currentSynapse++;
-        }
+  for (int i = 0; i < inputNeurons; i++) {
+    input[i] = new Neuron(Layer::input, (i == inputNeurons-1));
+    for (int j = 0; j < hiddenNeuronsPerLayer; j++) {
+      synapses[currentSynapse] = new Synapse(input[i], &hidden.at(j).at(0));
+      currentSynapse++;
     }
+  }
 
-  for (int j = 0; j < hiddenNeuronsPerLayer; j++)
-    {
-      for (int n = 0; n < hiddenLayers-1; n++)
-        {
-          for (int b = 0; b < hiddenNeuronsPerLayer; b++)
-            {
-              synapses[currentSynapse] =
-                new Synapse(&hidden.at(j).at(n), &hidden.at(b).at(n + 1));
-              currentSynapse++;
-            }
-        }
+  for (int j = 0; j < hiddenNeuronsPerLayer; j++) {
+    for (int n = 0; n < hiddenLayers-1; n++) {
+      for (int b = 0; b < hiddenNeuronsPerLayer; b++) {
+        synapses[currentSynapse] =
+          new Synapse(&hidden.at(j).at(n), &hidden.at(b).at(n + 1));
+        currentSynapse++;
+      }
     }
+  }
 
-  for (int i = 0; i < outputNeurons; i++)
-    {
-      output[i] = new Neuron(Layer::output, false);
-      for (int j = 0; j < hiddenNeuronsPerLayer; j++)
-        {
-          synapses[currentSynapse] =
-            new Synapse(&hidden.at(j).at(hiddenLayers-1), output[i]);
-          currentSynapse++;
-        }
+  for (int i = 0; i < outputNeurons; i++) {
+    output[i] = new Neuron(Layer::output, false);
+    for (int j = 0; j < hiddenNeuronsPerLayer; j++) {
+      synapses[currentSynapse] =
+        new Synapse(&hidden.at(j).at(hiddenLayers-1), output[i]);
+      currentSynapse++;
     }
-
+  }
 }
 
 } // end namespace NN
