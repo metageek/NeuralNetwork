@@ -4,7 +4,9 @@
 namespace NN {
 
 enum class Layer {
-	input,hidden,output
+  input,
+  hidden,
+  output
 };
 
 } // end namespace NN
