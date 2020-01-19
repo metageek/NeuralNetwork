@@ -10,8 +10,7 @@ namespace NN {
 
 class NeuralNetwork {
 private:
-  const int inputNeurons, hiddenLayers, hiddenNeuronsPerLayer,
-    outputNeurons, synapsesSize;
+  const int inputNeurons, hiddenLayers, hiddenNeuronsPerLayer, outputNeurons;
   Vector input, output;
   std::vector<Synapse*> synapses;
   std::vector<std::vector<Neuron>> hidden;
@@ -26,14 +25,14 @@ public:
       hiddenLayers(_hiddenLayers),
       hiddenNeuronsPerLayer(_hiddenNeuronsPerLayer),
       outputNeurons(_outputNeurons),
-      synapsesSize((inputNeurons*hiddenNeuronsPerLayer) +
-                   ((hiddenLayers-1) *
-                    hiddenNeuronsPerLayer *
-                    hiddenNeuronsPerLayer) +
-                   (outputNeurons*hiddenNeuronsPerLayer)),
       input(inputNeurons, nullptr),
       output(outputNeurons, nullptr),
-      synapses(synapsesSize, nullptr) {
+      synapses((inputNeurons*hiddenNeuronsPerLayer) +
+               ((hiddenLayers-1) *
+                hiddenNeuronsPerLayer *
+                hiddenNeuronsPerLayer) +
+               (outputNeurons*hiddenNeuronsPerLayer),
+               nullptr) {
     createNetwork();
   }
 
@@ -42,13 +41,13 @@ public:
   Vector& getInputLayer() { return input; }
   const Vector& getOutputLayer() const { return output; }
   void setWeights(float weights[]);
-  int getSynapsesSize();
+  int getSynapsesSize() { return synapses.size(); }
   std::vector<std::vector<Neuron>> * getHiddenLayer();
 };
 
 inline void NeuralNetwork::calculate()
 {
-  for (int i = 0; i < synapsesSize; i++)
+  for (int i = 0; i < synapses.size(); i++)
     {
       synapses[i]->getOutput()->
         calculateValue(synapses[i]->getWeight(),
@@ -59,15 +58,10 @@ inline void NeuralNetwork::calculate()
 
 inline void NeuralNetwork::setWeights(float weights[])
 {
-  for (int i = 0; i < synapsesSize; i++)
+  for (int i = 0; i < synapses.size(); i++)
     {
       synapses[i]->setWeight(weights[i]);
     }
-}
-
-inline int NeuralNetwork::getSynapsesSize()
-{
-  return synapsesSize;
 }
 
 inline std::vector<std::vector<Neuron>> * NeuralNetwork::getHiddenLayer()
