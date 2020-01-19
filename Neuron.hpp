@@ -10,9 +10,9 @@ namespace NN {
 
 class Neuron {
 private:
-	Layer layerType;
+	const Layer layerType;
 	float value;
-	bool last;
+	const bool last;
 public:
 	Neuron(Layer layerType, bool last);
 	void calculateValue(float weight, float inputValue, bool doSigmoid);
