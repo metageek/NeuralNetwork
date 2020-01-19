@@ -26,7 +26,6 @@ and don't forget to #include "NeuralNetwork.h".
 Using the library is easy.
 
 ```c
-Neuron *input, *output;
 int inputNeurons = 2;
 int hiddenLayers = 1;
 int hiddenNeuronsPerLayer = 3;
@@ -35,6 +34,8 @@ int ouputNeurons = 1;
 NeuralNetwork nn = NeuralNetwork(inputNeurons,
                                  hiddenLayers, hiddenNeuronsPerLayer,
                                  ouputNeurons);
+Neuron* input = nn.getInputLayer();
+Neuron* output = nn.getOutputLayer();
 
 //array with size equals to your input neurons number (inputNeurons)
 input[0].setValue(1);
