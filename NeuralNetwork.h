@@ -3,7 +3,7 @@
 #include "Synapse.h"
 #include <vector>
 
-class NeuralNetwok {
+class NeuralNetwork {
 private:
 	int inputNeurons, hiddenLayers, hiddenNeuronsPerLayer, ouputNeurons, synapsesSize;
 	Neuron *input, *output;
@@ -11,8 +11,8 @@ private:
 	std::vector<std::vector<Neuron>> hidden;
 	void createNetwork();
 public:
-	NeuralNetwok(int inputNeurons, int hiddenLayers, int hiddenNeuronsPerLayer, int ouputNeurons);
-	~NeuralNetwok();
+	NeuralNetwork(int inputNeurons, int hiddenLayers, int hiddenNeuronsPerLayer, int ouputNeurons);
+	~NeuralNetwork();
 	void calculate();
 	Synapse * getAllSynapses();
 	Neuron * getInputLayer();
@@ -22,7 +22,7 @@ public:
 	std::vector<std::vector<Neuron>> * getHiddenLayer();
 };
 
-inline NeuralNetwok::NeuralNetwok(int inputNeurons, int hiddenLayers, int hiddenNeuronsPerLayer, int ouputNeurons)
+inline NeuralNetwork::NeuralNetwork(int inputNeurons, int hiddenLayers, int hiddenNeuronsPerLayer, int ouputNeurons)
 {
 	this->inputNeurons = inputNeurons;
 	this->hiddenLayers = hiddenLayers;
@@ -35,14 +35,14 @@ inline NeuralNetwok::NeuralNetwok(int inputNeurons, int hiddenLayers, int hidden
 	this->createNetwork();
 }
 
-inline NeuralNetwok::~NeuralNetwok()
+inline NeuralNetwork::~NeuralNetwork()
 {
 	delete synapses;
 	delete input;
 	delete output;
 }
 
-inline void NeuralNetwok::calculate()
+inline void NeuralNetwork::calculate()
 {
 	for (int i = 0; i < this->synapsesSize; i++)
 	{
@@ -50,22 +50,22 @@ inline void NeuralNetwok::calculate()
 	}
 }
 
-inline Synapse *  NeuralNetwok::getAllSynapses()
+inline Synapse *  NeuralNetwork::getAllSynapses()
 {
 	return this->synapses;
 }
 
-inline Neuron * NeuralNetwok::getInputLayer()
+inline Neuron * NeuralNetwork::getInputLayer()
 {
 	return this->input;
 }
 
-inline Neuron * NeuralNetwok::getOutputLayer()
+inline Neuron * NeuralNetwork::getOutputLayer()
 {
 	return this->output;
 }
 
-inline void NeuralNetwok::setWeights(float weights[])
+inline void NeuralNetwork::setWeights(float weights[])
 {
 	for (int i = 0; i < this->synapsesSize; i++)
 	{
@@ -73,17 +73,17 @@ inline void NeuralNetwok::setWeights(float weights[])
 	}
 }
 
-inline int NeuralNetwok::getSynapsesSize()
+inline int NeuralNetwork::getSynapsesSize()
 {
 	return this->synapsesSize;
 }
 
-inline std::vector<std::vector<Neuron>> * NeuralNetwok::getHiddenLayer()
+inline std::vector<std::vector<Neuron>> * NeuralNetwork::getHiddenLayer()
 {
 	return &this->hidden;
 }
 
-inline void NeuralNetwok::createNetwork()
+inline void NeuralNetwork::createNetwork()
 {
 	int currentSynapse = 0;
 	int id = 0;
