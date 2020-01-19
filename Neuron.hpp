@@ -14,7 +14,6 @@ private:
 	float value;
 	bool last;
 public:
-	Neuron();
 	Neuron(Layer layerType, bool last);
 	Neuron(Layer layerType, int id, bool last);
 	int id;
@@ -26,12 +25,6 @@ public:
 };
 
 using Vector = std::vector<Neuron*>;
-
-inline Neuron::Neuron()
-{
-	this->value = 0;
-	this->last = false;
-}
 
 inline Neuron::Neuron(Layer layerType, bool last)
 {
