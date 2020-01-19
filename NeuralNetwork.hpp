@@ -10,12 +10,14 @@ namespace NN {
 
 class NeuralNetwork {
 private:
-  int inputNeurons, hiddenLayers, hiddenNeuronsPerLayer,
+  const int inputNeurons, hiddenLayers, hiddenNeuronsPerLayer,
     outputNeurons, synapsesSize;
   Vector input, output;
   Synapse *synapses;
   std::vector<std::vector<Neuron>> hidden;
+
   void createNetwork();
+  
 public:
   NeuralNetwork(int _inputNeurons,
                 int _hiddenLayers, int _hiddenNeuronsPerLayer,
@@ -28,9 +30,9 @@ public:
                    ((hiddenLayers-1) *
                     hiddenNeuronsPerLayer *
                     hiddenNeuronsPerLayer) +
-                   (outputNeurons*hiddenNeuronsPerLayer)) {
-    input.resize(inputNeurons, nullptr);
-    output.resize(outputNeurons, nullptr);
+                   (outputNeurons*hiddenNeuronsPerLayer)),
+      input(inputNeurons, nullptr),
+      output(outputNeurons, nullptr) {
     synapses = new Synapse[synapsesSize];
     createNetwork();
   }
