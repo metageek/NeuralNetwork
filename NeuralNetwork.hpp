@@ -95,7 +95,7 @@ inline void NeuralNetwork::createNetwork()
   }
 
   for (int i = 0; i < outputNeurons; i++) {
-    output[i] = new Neuron(Layer::output, false);
+    output[i] = new Neuron(Layer::output);
     for (int j = 0; j < hiddenNeuronsPerLayer; j++) {
       synapses[currentSynapse] =
         new Synapse(&hidden.at(j).at(hiddenLayers-1), output[i]);

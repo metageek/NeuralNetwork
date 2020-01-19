@@ -15,12 +15,13 @@ private:
 	const bool last;
 
         float calculate(float weight, float inputValue, bool doSigmoid) {
-                return doSigmoid ?
-                        sigmoid(value + (weight * inputValue)) :
-                        value + (weight * inputValue);
+          return doSigmoid ?
+            sigmoid(value + (weight * inputValue)) :
+            value + (weight * inputValue);
         }
+
 public:
-	Neuron(Layer _layerType, bool _last)
+	Neuron(Layer _layerType, bool _last = false)
           : layerType(_layerType), value(0), last(_last) {
         }
         void calculateValue(float weight, float inputValue, bool doSigmoid) {
