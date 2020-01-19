@@ -10,7 +10,7 @@ namespace NN {
 
 class NeuralNetwork {
 private:
-	int inputNeurons, hiddenLayers, hiddenNeuronsPerLayer, ouputNeurons, synapsesSize;
+	int inputNeurons, hiddenLayers, hiddenNeuronsPerLayer, outputNeurons, synapsesSize;
 	Vector input, output;
 	Synapse *synapses;
 	std::vector<std::vector<Neuron>> hidden;
@@ -18,16 +18,16 @@ private:
 public:
 	NeuralNetwork(int _inputNeurons,
                       int _hiddenLayers, int _hiddenNeuronsPerLayer,
-                      int _ouputNeurons)
+                      int _outputNeurons)
           : inputNeurons(_inputNeurons),
             hiddenLayers(_hiddenLayers),
             hiddenNeuronsPerLayer(_hiddenNeuronsPerLayer),
-            ouputNeurons(_ouputNeurons),
+            outputNeurons(_outputNeurons),
             synapsesSize((inputNeurons*hiddenNeuronsPerLayer) +
                          ((hiddenLayers-1)*hiddenNeuronsPerLayer*hiddenNeuronsPerLayer) +
-                         (ouputNeurons*hiddenNeuronsPerLayer)) {
+                         (outputNeurons*hiddenNeuronsPerLayer)) {
           input.resize(inputNeurons, nullptr);
-          output.resize(ouputNeurons, nullptr);
+          output.resize(outputNeurons, nullptr);
           synapses = new Synapse[this->synapsesSize];
           createNetwork();
         }
@@ -120,7 +120,7 @@ inline void NeuralNetwork::createNetwork()
 		}
 	}
 
-	for (int i = 0; i < this->ouputNeurons; i++)
+	for (int i = 0; i < this->outputNeurons; i++)
 	{
                 output[i] = new Neuron(Layer::output, false);
 		for (int j = 0; j < this->hiddenNeuronsPerLayer; j++)
