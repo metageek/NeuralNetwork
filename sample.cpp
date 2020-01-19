@@ -2,6 +2,8 @@
 
 #include "NeuralNetwork.hpp"
 
+using namespace NN;
+
 int main(int argc, const char* argv[]) {
   int inputNeurons = 2;
   int hiddenLayers = 1;

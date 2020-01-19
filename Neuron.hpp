@@ -4,6 +4,8 @@
 #include <cmath>
 #include "Layer.hpp"
 
+namespace NN {
+
 class Neuron {
 private:
 	Layer layerType;
@@ -69,5 +71,7 @@ inline bool Neuron::isLast()
 {
 	return this->last;
 }
+
+} // end namespace NN
 
 #endif //_NEURAL_NETWORK_NEURON_HPP_

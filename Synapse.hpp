@@ -3,6 +3,8 @@
 
 #include "Neuron.hpp"
 
+namespace NN {
+
 class Synapse {
 private:
 	float weight;
@@ -45,5 +47,7 @@ inline Neuron * Synapse::getOutput()
 {
 	return this->output;
 }
+
+} // end namespace NN
 
 #endif //_NEURAL_NETWORK_SYNAPSE_HPP_

@@ -5,6 +5,8 @@
 #include "Synapse.hpp"
 #include <vector>
 
+namespace NN {
+
 class NeuralNetwork {
 private:
 	int inputNeurons, hiddenLayers, hiddenNeuronsPerLayer, ouputNeurons, synapsesSize;
@@ -144,5 +146,7 @@ inline void NeuralNetwork::createNetwork()
 	}
 
 }
+
+} // end namespace NN
 
 #endif //_NEURAL_NETWORK_NEURAL_NETWORK_HPP_
